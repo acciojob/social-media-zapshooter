@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const CreatePost = () => {
+const CreatePost = ({ history }) => {
   const [postContent, setPostContent] = useState('');
   const [selectedAuthor, setSelectedAuthor] = useState('');
-  const navigate = useNavigate();
 
   const authors = [
     { id: 1, name: 'John Doe' },
@@ -21,15 +20,13 @@ const CreatePost = () => {
       return;
     }
 
-    // In a real app, you would send this data to an API
     console.log('Creating post:', {
       author: selectedAuthor,
       content: postContent
     });
 
-    // Show success message and redirect
     alert('Post created successfully!');
-    navigate('/');
+    history.push('/');
   };
 
   return (
@@ -73,4 +70,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default withRouter(CreatePost);
