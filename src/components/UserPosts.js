@@ -1,10 +1,9 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
-const UserPosts = () => {
-  const { userId } = useParams();
+const UserPosts = ({ match }) => {
+  const { userId } = match.params;
   
-  // Mock data - in real app, this would come from API
   const users = {
     1: {
       name: 'John Doe',
@@ -20,7 +19,12 @@ const UserPosts = () => {
         { id: 4, content: 'Just started reading a new book!', date: '2024-01-08' }
       ]
     },
-    // ... other users
+    3: {
+      name: 'Mike Johnson',
+      posts: [
+        { id: 5, content: 'Just read an incredible book about AI!', date: '2024-01-13' }
+      ]
+    }
   };
 
   const user = users[userId];
@@ -58,4 +62,4 @@ const UserPosts = () => {
   );
 };
 
-export default UserPosts;
+export default withRouter(UserPosts);
