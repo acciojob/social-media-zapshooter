@@ -7,14 +7,12 @@ const NotificationsPage = () => {
   const refreshNotifications = () => {
     setLoading(true);
     
-    // Simulate API call
     setTimeout(() => {
       const newNotifications = [
         { id: 1, message: 'John Doe liked your post', read: false, timestamp: '2 min ago' },
         { id: 2, message: 'Jane Smith commented on your photo', read: false, timestamp: '5 min ago' },
         { id: 3, message: 'Mike Johnson started following you', read: true, timestamp: '1 hour ago' },
-        { id: 4, message: 'Your post has been shared 3 times', read: false, timestamp: '2 hours ago' },
-        { id: 5, message: 'Sarah Wilson sent you a message', read: true, timestamp: '3 hours ago' }
+        { id: 4, message: 'Your post has been shared 3 times', read: false, timestamp: '2 hours ago' }
       ];
       
       setNotifications(newNotifications);
