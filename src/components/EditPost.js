@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const EditPost = () => {
-  const { postId } = useParams();
-  const navigate = useNavigate();
+const EditPost = ({ history, match }) => {
+  const { postId } = match.params;
   
-  // Mock data - in real app, this would come from API
   const posts = {
     1: { title: 'My First Post', content: 'Just finished working on an amazing new project!', author: 'John Doe' },
     2: { title: 'Learning Journey', content: 'Learning React has been an incredible journey!', author: 'John Doe' },
-    3: { title: 'Hiking Adventure', content: 'Beautiful day for a hike!', author: 'Jane Smith' }
+    3: { title: 'Hiking Adventure', content: 'Beautiful day for a hike!', author: 'Jane Smith' },
+    4: { title: 'Book Recommendation', content: 'Just started reading a new book!', author: 'Jane Smith' },
+    5: { title: 'AI Book Review', content: 'Just read an incredible book about AI!', author: 'Mike Johnson' }
   };
 
   const post = posts[postId];
@@ -24,12 +24,10 @@ const EditPost = () => {
       return;
     }
 
-    // In a real app, you would send this data to an API
     console.log('Updating post:', { postId, title, content });
 
-    // Show success message and redirect
     alert('Post updated successfully!');
-    navigate('/');
+    history.push('/');
   };
 
   if (!post) {
@@ -70,4 +68,4 @@ const EditPost = () => {
   );
 };
 
-export default EditPost;
+export default withRouter(EditPost);
