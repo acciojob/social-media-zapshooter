@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
-  // Mock data - in real app, this would come from API
   const posts = [
     {
       id: 1,
